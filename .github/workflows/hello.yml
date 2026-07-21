@@ -1,0 +1,25 @@
+name: My First Github Action
+
+on:
+  push
+
+jobs:
+  hello-job:
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: action/checkout@v4
+      
+      - uses: action/python-setup@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check Python version
+        run: python --version
+
+      - name: List all files
+        run: ls
+
+      - name: Run python program
+        run: python app.py

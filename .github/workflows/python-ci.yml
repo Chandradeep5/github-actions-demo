@@ -3,7 +3,63 @@ name: Backend Pipeline
 on:
   push:
 
-jobs:
+jobs: branch_1
+  
+  build:
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      
+      - name: Checkout Application
+        uses: actions/checkout@v4
+
+      - name: Waiting for 10sec
+        run: sleep 10
+
+      - run: echo "Running build"
+
+  lint:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Application
+        uses: actions/checkout@v4
+
+      - name: Waiting for 5 sec
+        run: sleep 5 
+
+      - run: echo "Running lint"
+
+  test:
+
+    needs: [build, lint]
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      
+      - name: Checkout Application
+        uses: actions/checkout@v4
+
+      - run: echo "Running lint"
+
+  deploy:
+
+    needs: test
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Application
+        uses: actions/checkout@v4
+
+      - run: echo "Running lint"
+
+jobs: branch_2
   
   build:
     

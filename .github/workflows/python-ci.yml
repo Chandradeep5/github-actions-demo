@@ -2,59 +2,70 @@ name: Backend Pipeline
 
 on:
   push:
+    branches:
+      - Application_1
+      - Application_2
+      - Application_3
 
 jobs: 
   
-  build:
+  Application_1_build:
     
     runs-on: ubuntu-latest
 
     steps:
       
-      - name: Checkout Application
-        uses: actions/checkout@v4
+      - name: Application_1
 
-      - name: Waiting for 10sec
-        run: sleep 10
+      - run: echo "Running Application_1_build"
 
-      - run: echo "Running build"
-
-  lint:
-
-    runs-on: ubuntu-latest
-
+  Application_2_bulid:
     steps:
+      - name : Application_2
+      - run : echo "running Application_2_bulid"
 
-      - name: Checkout Application
-        uses: actions/checkout@v4
+  Application_3_bulid:
+    steps:
+      - name : Application_3
+      - run : echo "running Application_3_bulid"
 
-      - name: Waiting for 5 sec
-        run: sleep 5 
+  # lint:
 
-      - run: echo "Running lint"
+  #   runs-on: ubuntu-latest
 
-  test:
+  #   steps:
 
-    needs: [build, lint]
+  #     - name: Checkout Application
+  #       uses: actions/checkout@v4
 
-    runs-on: ubuntu-latest
+  #     - name: Waiting for 5 sec
+  #       run: sleep 5 
+
+  #     - run: echo "Running lint"
+
+  # test:
+
+  #   needs: [build, lint]
+
+  #   runs-on: ubuntu-latest
     
-    steps:
+  #   steps:
       
-      - name: Checkout Application
-        uses: actions/checkout@v4
+  #     - name: Checkout Application
+  #       uses: actions/checkout@v4
 
-      - run: echo "Running lint"
+  #     - run: echo "Running lint"
 
-  deploy:
+  # deploy:
 
-    needs: test
+  #   needs: test
 
-    runs-on: ubuntu-latest
+  #   runs-on: ubuntu-latest
 
-    steps:
+  #   steps:
 
-      - name: Checkout Application
-        uses: actions/checkout@v4
+  #     - name: Checkout Application
+  #       uses: actions/checkout@v4
 
-      - run: echo "Running lint"
+  #     - run: echo "Running lint"
+

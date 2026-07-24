@@ -37,7 +37,7 @@ jobs:
 
       - run: sleep 20
       
-      - run: exit
+      - run: exit 1
 
       - run: echo "Building Project"
 

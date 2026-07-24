@@ -40,6 +40,8 @@ jobs:
       - run: echo "Building Project"
 
   tests:
+    
+    needs: build
 
     runs-on: ubuntu-latest
 

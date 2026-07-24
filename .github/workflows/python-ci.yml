@@ -26,3 +26,24 @@ jobs:
 
       - name: Run test
         run: python test_calculator.py
+
+  build:
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      
+      - uses: actions/checkout@v4
+
+      - run: echo "Building Project"
+
+  tests:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - run: echo "Running Test"
+

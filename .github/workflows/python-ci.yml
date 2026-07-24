@@ -1,55 +1,62 @@
-name: Python CI Practise
+name: Backend Pipeline
 
 on:
   push:
 
 jobs:
   
-  job_1:
+  build:
     
     runs-on: ubuntu-latest
 
     steps:
       
-      - name: Checkout Repositry
+      - name: Checkout Application
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
+      - name: Waiting for 10sec
+        run: sleep 10
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+      - run: echo "Running build"
 
-      - name: Run test
-        run: python test_calculator.py
-
-  job_2:
-    
-    runs-on: ubuntu-latest
-
-    steps:
-      
-      - uses: actions/checkout@v4
-
-      - run: sleep 20
-      
-      - run: exit 1
-
-      - run: echo "Building Project"
-
-  job_3:
-    
-    needs: job_2
+  lint:
 
     runs-on: ubuntu-latest
 
     steps:
 
-      - uses: actions/checkout@v4
+      - name: Checkout Application
+        uses: actions/checkout@v4
 
-      - run: echo "Running Test"
+      - name: Waiting for 5 sec
+        run: sleep 5 
 
+      - run: echo "Running lint"
+
+  test:
+
+    needs: [build, lint]
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      
+      - name: Checkout Application
+        uses: actions/checkout@v4
+
+      - run: echo "Running lint"
+
+  deploy:
+
+    needs: test
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Application
+        uses: actions/checkout@v4
+
+      - run: echo "Running lint"
+
+      

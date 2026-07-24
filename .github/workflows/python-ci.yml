@@ -20,11 +20,15 @@ jobs:
       - run: echo "Running Application_1_build"
 
   Application_2_bulid:
+
+    runs-on: ubuntu-latest
     steps:
       - name : Application_2
       - run : echo "running Application_2_bulid"
 
   Application_3_bulid:
+
+    runs-on: ubuntu-latest
     steps:
       - name : Application_3
       - run : echo "running Application_3_bulid"

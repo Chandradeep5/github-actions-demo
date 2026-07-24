@@ -3,7 +3,7 @@ name: Backend Pipeline
 on:
   push:
 
-jobs: branch_1
+jobs: 
   
   build:
     
@@ -59,7 +59,7 @@ jobs: branch_1
 
       - run: echo "Running lint"
 
-jobs: branch_2
+jobs: 
   
   build:
     
